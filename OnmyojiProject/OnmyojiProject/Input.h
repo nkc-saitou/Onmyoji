@@ -85,6 +85,8 @@ public:
 	int AngleInputX(int padType);
 	int AngleInputY(int padType);
 
+	XINPUT_STATE PadState(int padType);
+
 	//ƒpƒbƒh‚ğU“®‚³‚¹‚é
 	void PadStartVibration(int padType, int Power = 1000, int Time = -1);
 

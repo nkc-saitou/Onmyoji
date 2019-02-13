@@ -244,7 +244,7 @@ int Input::AngleInputX(int padType)
 
 	PadInputSetting(padType);
 
-	float angleInput_x = InputX / 1000;
+	float angleInput_x = InputX;
 	
 	return angleInput_x;
 }
@@ -260,7 +260,7 @@ int Input::AngleInputY(int padType)
 
 	PadInputSetting(padType);
 
-	float angleInput_y = InputY / 1000;
+	float angleInput_y = InputY;
 
 	return angleInput_y;
 }
