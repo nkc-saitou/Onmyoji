@@ -1,2 +1,4 @@
 ﻿  Player.cpp
+c:\users\user\documents\onmyoji\onmyojiproject\onmyojiproject\player.cpp(167): warning C4244: '引数': 'double' から 'int' への変換です。データが失われる可能性があります。
+c:\users\user\documents\onmyoji\onmyojiproject\onmyojiproject\player.cpp(168): warning C4244: '引数': 'double' から 'int' への変換です。データが失われる可能性があります。
   OnmyojiProject.vcxproj -> C:\Users\user\Documents\Onmyoji\OnmyojiProject\Debug\OnmyojiProject.exe

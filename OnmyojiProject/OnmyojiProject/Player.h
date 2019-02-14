@@ -1,5 +1,8 @@
 #pragma once
 
+#include "RectShape.h"
+#include <memory>
+
 /*
 ///////////////////////////////////////////
 Direction列挙隊
@@ -19,32 +22,33 @@ enum Direction
 ///////////////////////////////////////////
 Playerクラス
 
-概要　：プレイヤーの表示や、挙動を制御。
+概要　：プレイヤーの表示や、挙動を制御
 ///////////////////////////////////////////
 */
-class  Player
+class  Player : public RectShape
 {
-	// グラフィックハンドル
-	int ghPlayer[12];
+	//===============================
+	// 変数
+	//===============================
 
 	// イメージのサイズ。縦横ともに64px
 	const int graphSize = 64;
 
 	// イメージ全体の分割数
 	const int allDivision = 12;
+
 	// 横の分割数
 	const int divisionX = 3;
+
 	// 縦の分割数
 	const int divisionY = 4;
 
-	// 移動スピード
-	float speed = 3.0f;
 
-	// 移動係数
-	float move = 1.0f;
+	// グラフィックハンドル
+	int ghPlayer[12];
 
 	// アナログスティックの回転度を取得
-	int tempMoveX = 0 , tempMoveY = 0;
+	int tempMoveX = 0, tempMoveY = 0;
 
 	// 横方向と縦方向のカウント数
 	int xCount = 0, yCount = 0;
@@ -52,23 +56,33 @@ class  Player
 	//添え時用変数
 	int ix = 0, iy = 0, result = 0;
 
-	// 座標
-	int x = 360, y = 200;
 
-	// アナログパッドの回転角度がこの値以上になった場合、移動したとみなされる
-	const int defaultValueAngle = 500;
+	// 座標
+	double x = 360, y = 200;
+
+
+	// 移動スピード
+	float speed = 3.0f;
+
+	// 移動係数
+	float move = 1.0f;
+
 
 	// 現在の方向
 	Direction directionState = down;
 
+	//===============================
+	// 関数
+	//===============================
 public:
-
 	Player();
 	void Update();
+	void SetPosition();
 
 private:
 
 	void MoveGraphSet(); // 移動した際のイメージの変更処理
 	void Draw(); // 表示処理
 	void Move(); // 移動処理
+	void Collision();
 };

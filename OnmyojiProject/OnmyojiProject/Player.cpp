@@ -4,11 +4,17 @@
 
 #include <cmath>
 
-Player::Player()
+Player::Player() : RectShape()
 {
 	// 画像読み込み
 	LoadDivGraph("test.png", allDivision, divisionX, divisionY, graphSize, graphSize, ghPlayer);
 }
+
+//Player::Player()
+//{
+//	// 画像読み込み
+//	LoadDivGraph("test.png", allDivision, divisionX, divisionY, graphSize, graphSize, ghPlayer);
+//}
 
 /////////////////////////////////////////////////////
 //引数			:なし
@@ -153,11 +159,29 @@ void Player::MoveGraphSet()
 /////////////////////////////////////////////////////
 void Player::Draw()
 {
-	DrawFormatString(100, 100, GetColor(255, 255, 255), "x:%d y:%d",x, y);
-
-	DrawGraph(x, y, ghPlayer[result], TRUE);
+	DrawFormatString(100, 100, GetColor(255, 255, 255), "x:%lf y:%lf",x, y);
 
 	MoveGraphSet();
+
+	// プレイヤー表示
+	DrawGraph(x, y, ghPlayer[result], TRUE);
+	DrawCircle(x, y, 10, GetColor(255, 0, 0), TRUE);
+
+}
+
+void Player::SetPosition()
+{
+	double top	  =  y;
+	double bottom =  y + graphSize;
+	double left   =  x;
+	double right  =  x + graphSize;
+
+	SetValue(&top, &bottom, &left, &right);
+}
+
+void Player::Collision()
+{
+
 }
 
 /////////////////////////////////////////////////////
@@ -171,6 +195,10 @@ void Player::Update()
 	tempMoveX = Input::Instance()->AngleInputX(Pad_1);
 	tempMoveY = Input::Instance()->AngleInputY(Pad_1);
 
+
+	DrawFormatString(100, 600, GetColor(255, 255, 255), "top:%lf bottom:%lf left:%lf right:%lf", GetTop(), GetBottom(),GetLeft(),GetRight());
+	DrawFormatString(100, 700, GetColor(255, 255, 255), "top: 300 bottom:500 left:300 right:500");
 	Move();
 	Draw();
+	SetPosition();
 }
