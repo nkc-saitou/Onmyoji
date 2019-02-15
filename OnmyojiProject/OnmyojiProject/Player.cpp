@@ -10,12 +10,6 @@ Player::Player() : RectShape()
 	LoadDivGraph("test.png", allDivision, divisionX, divisionY, graphSize, graphSize, ghPlayer);
 }
 
-//Player::Player()
-//{
-//	// âÊëúì«Ç›çûÇ›
-//	LoadDivGraph("test.png", allDivision, divisionX, divisionY, graphSize, graphSize, ghPlayer);
-//}
-
 /////////////////////////////////////////////////////
 //à¯êî			:Ç»Çµ
 //ñﬂÇËíl		:Ç»Çµ

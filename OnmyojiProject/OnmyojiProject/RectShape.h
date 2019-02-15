@@ -2,6 +2,15 @@
 
 #include "BaseShape.h"
 
+struct RectPosition
+{
+	int top;
+	int bottom;
+	int left;
+	int right;
+};
+
+
 /*
 ///////////////////////////////////////////
 RectShapeƒNƒ‰ƒX
@@ -18,6 +27,7 @@ protected:
 	double shape_top, shape_bottom, shape_left, shape_right;
 
 public:
+	RectPosition rectPosition;
 
 	RectShape() {};
 
@@ -29,6 +39,11 @@ public:
 		this->shape_bottom	= *bottom;
 		this->shape_left	= *left;
 		this->shape_right	= *right;
+
+		this->rectPosition.top = *top;
+		this->rectPosition.bottom = *bottom;
+		this->rectPosition.left = *left;
+		this->rectPosition.right = *right;
 	}
 
 	double GetTop()	   const { return shape_top; }

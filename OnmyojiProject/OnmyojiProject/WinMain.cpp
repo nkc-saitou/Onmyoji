@@ -19,6 +19,19 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
 	//描画先を裏画面にする
 	SetDrawScreen(DX_SCREEN_BACK);
 
+	RectPosition testPos;
+
+	testPos.left = 300;
+	testPos.top = 300;
+	testPos.right = 500;
+	testPos.bottom = 500;
+
+	CirclePosition circleTestPos;
+
+	circleTestPos.x = 700;
+	circleTestPos.y = 500;
+	circleTestPos.raddius = 100;
+
 	std::unique_ptr<Player> player(new Player);
 	std::unique_ptr<Collision> collision(new Collision);
 
@@ -29,18 +42,17 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
 
 		player->Update();
 
-		DrawBox(300, 300, 500, 500, GetColor(255, 0, 0), TRUE);
+		DrawBox(testPos.left, testPos.top, testPos.right, testPos.bottom, GetColor(255, 0, 0), TRUE);
 
-		if (collision->testRect(
-			player->GetTop(), player->GetBottom(), player->GetLeft(), player->GetRight(),
-			300, 500, 300, 500))
-		{
+		DrawCircle(circleTestPos.x, circleTestPos.y, circleTestPos.raddius, GetColor(255, 0, 0), TRUE);
+
+		if(collision->CheckRectAndRect(player->rectPosition, testPos)) 
 			DrawBox(300, 300, 500, 500, GetColor(255, 255, 0), TRUE);
-		}
-		else
-		{
-			DrawBox(300, 300, 500, 500, GetColor(255, 0, 0), TRUE);
-		}
+		else DrawBox(300, 300, 500, 500, GetColor(255, 0, 0), TRUE);
+
+		if(collision->CheckRectAndCircle(player->rectPosition,circleTestPos))  
+			DrawCircle(circleTestPos.x, circleTestPos.y, circleTestPos.raddius, GetColor(255, 255, 0), TRUE);
+		else DrawCircle(circleTestPos.x, circleTestPos.y, circleTestPos.raddius, GetColor(255, 0, 0), TRUE);
 
 		Input::Instance()->InputMemory(); // Inputを更新
 		ScreenFlip();	//裏画面を表画面にコピー

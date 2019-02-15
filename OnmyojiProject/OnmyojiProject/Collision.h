@@ -6,9 +6,12 @@
 
 class Collision
 {
+
+	bool RectPointAndCircle(const RectPosition& rect,const CirclePosition& circle);
+	bool RectVertexAndCircle(const RectPosition& rect,const CirclePosition& circle);
+
 public:
-	bool CheckRectAndRect(const RectShape& rect1, const RectShape& rect2);
-	bool testRect(int top, int bottom, int left, int right, int top2, int bottom2, int left2, int right2);
-	bool CheckCircleAndCircle(const CircleShape& circle1, const CircleShape& circle2);
-	bool CheckRectAndCircle(const RectShape& rect, const CircleShape& circle);
+	bool CheckRectAndRect(const RectPosition& rect1, const RectPosition& rect2);
+	bool CheckCircleAndCircle(const CirclePosition& circle1, const CirclePosition& circle2);
+	bool CheckRectAndCircle(const RectPosition& rect, const CirclePosition& circle);
 };

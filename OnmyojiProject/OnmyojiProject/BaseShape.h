@@ -26,4 +26,5 @@ class BaseShape
 {
 public:
 	virtual ShapeType GetShapeType() { return shape_Rect; };
+
 };

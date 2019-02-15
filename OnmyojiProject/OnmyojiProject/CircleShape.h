@@ -2,6 +2,14 @@
 
 #include "BaseShape.h"
 
+struct CirclePosition
+{
+	int x;
+	int y;
+	int raddius;
+};
+
+
 /*
 ///////////////////////////////////////////
 CircleShapeクラス
@@ -18,12 +26,22 @@ class CircleShape : public BaseShape
 
 public:
 
-	// それぞれの値を（）の値で初期化
-	// http://kowaimononantenai.blogspot.com/2012/10/c.html
-	CircleShape(float x, float y, float raddius) :
-		shape_x(x), shape_y(y), shape_raddius(raddius) {}
+	CirclePosition circlePosition;
+
+	CircleShape() {};
 
 	ShapeType GetShapeType() { return shape_Circle; }
+
+	void SetValue(double *x, double *y, double *raddius)
+	{
+		this->shape_x = *x;
+		this->shape_y = *y;
+		this->shape_raddius = *raddius;
+
+		this->circlePosition.x = *x;
+		this->circlePosition.y = *y;
+		this->circlePosition.raddius = *raddius;
+	}
 
 	float GetX() const { return shape_x; }
 	float GetY() const { return shape_y; }

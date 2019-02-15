@@ -1,4 +1,12 @@
-﻿  Player.cpp
-c:\users\user\documents\onmyoji\onmyojiproject\onmyojiproject\player.cpp(167): warning C4244: '引数': 'double' から 'int' への変換です。データが失われる可能性があります。
-c:\users\user\documents\onmyoji\onmyojiproject\onmyojiproject\player.cpp(168): warning C4244: '引数': 'double' から 'int' への変換です。データが失われる可能性があります。
+﻿  WinMain.cpp
+c:\users\user\documents\onmyoji\onmyojiproject\onmyojiproject\rectshape.h(43): warning C4244: '=': 'double' から 'int' への変換です。データが失われる可能性があります。
+c:\users\user\documents\onmyoji\onmyojiproject\onmyojiproject\rectshape.h(44): warning C4244: '=': 'double' から 'int' への変換です。データが失われる可能性があります。
+c:\users\user\documents\onmyoji\onmyojiproject\onmyojiproject\rectshape.h(45): warning C4244: '=': 'double' から 'int' への変換です。データが失われる可能性があります。
+c:\users\user\documents\onmyoji\onmyojiproject\onmyojiproject\rectshape.h(46): warning C4244: '=': 'double' から 'int' への変換です。データが失われる可能性があります。
+c:\users\user\documents\onmyoji\onmyojiproject\onmyojiproject\circleshape.h(37): warning C4244: '=': 'double' から 'float' への変換です。データが失われる可能性があります。
+c:\users\user\documents\onmyoji\onmyojiproject\onmyojiproject\circleshape.h(38): warning C4244: '=': 'double' から 'float' への変換です。データが失われる可能性があります。
+c:\users\user\documents\onmyoji\onmyojiproject\onmyojiproject\circleshape.h(39): warning C4244: '=': 'double' から 'float' への変換です。データが失われる可能性があります。
+c:\users\user\documents\onmyoji\onmyojiproject\onmyojiproject\circleshape.h(41): warning C4244: '=': 'double' から 'int' への変換です。データが失われる可能性があります。
+c:\users\user\documents\onmyoji\onmyojiproject\onmyojiproject\circleshape.h(42): warning C4244: '=': 'double' から 'int' への変換です。データが失われる可能性があります。
+c:\users\user\documents\onmyoji\onmyojiproject\onmyojiproject\circleshape.h(43): warning C4244: '=': 'double' から 'int' への変換です。データが失われる可能性があります。
   OnmyojiProject.vcxproj -> C:\Users\user\Documents\Onmyoji\OnmyojiProject\Debug\OnmyojiProject.exe
