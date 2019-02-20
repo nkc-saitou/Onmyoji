@@ -1,7 +1,13 @@
 #pragma once
 
-#include "BaseShape.h"
+/*
+///////////////////////////////////////////
+CirclePosition構造体
 
+概要　：円形オブジェクトの各座標が記録されている
+使い方：当たり判定を実行する際の引数として与える
+///////////////////////////////////////////
+*/
 struct CirclePosition
 {
 	int x;
@@ -19,31 +25,20 @@ CircleShapeクラス
 　　　　コンストラクタでｘ、ｙ、半径をそれぞれ指定する必要あり
 ///////////////////////////////////////////
 */
-class CircleShape : public BaseShape
+class CircleShape
 {
-	// ｘ、ｙ、半径
-	float shape_x, shape_y, shape_raddius;
-
 public:
 
 	CirclePosition circlePosition;
 
-	CircleShape() {};
-
-	ShapeType GetShapeType() { return shape_Circle; }
-
 	void SetValue(double *x, double *y, double *raddius)
 	{
-		this->shape_x = *x;
-		this->shape_y = *y;
-		this->shape_raddius = *raddius;
-
 		this->circlePosition.x = *x;
 		this->circlePosition.y = *y;
 		this->circlePosition.raddius = *raddius;
 	}
 
-	float GetX() const { return shape_x; }
-	float GetY() const { return shape_y; }
-	float GetRaddius() const { return shape_raddius; }
+	float GetX() const { return circlePosition.x; }
+	float GetY() const { return circlePosition.y; }
+	float GetRaddius() const { return circlePosition.raddius; }
 };

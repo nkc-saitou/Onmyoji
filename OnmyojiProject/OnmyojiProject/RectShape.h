@@ -1,7 +1,13 @@
 #pragma once
 
-#include "BaseShape.h"
+/*
+///////////////////////////////////////////
+RectPosition構造体
 
+概要　：矩形オブジェクトの各座標を記憶する
+使い方：当たり判定を実行する際の引数として与える
+///////////////////////////////////////////
+*/
 struct RectPosition
 {
 	int top;
@@ -9,7 +15,6 @@ struct RectPosition
 	int left;
 	int right;
 };
-
 
 /*
 ///////////////////////////////////////////
@@ -20,35 +25,24 @@ RectShapeクラス
 　　　　コンストラクタでｘ、ｙ、半径をそれぞれ指定する必要あり
 ///////////////////////////////////////////
 */
-class RectShape : public BaseShape 
+class RectShape
 {
-protected:
-
-	double shape_top, shape_bottom, shape_left, shape_right;
-
 public:
 	RectPosition rectPosition;
 
-	RectShape() {};
-
-	ShapeType GetShapeType() override { return shape_Rect; }
-
+	// 構造体の値を更新
 	void SetValue(double *top, double *bottom, double *left, double *right)
 	{
-		this->shape_top		= *top;
-		this->shape_bottom	= *bottom;
-		this->shape_left	= *left;
-		this->shape_right	= *right;
-
 		this->rectPosition.top = *top;
 		this->rectPosition.bottom = *bottom;
 		this->rectPosition.left = *left;
 		this->rectPosition.right = *right;
 	}
 
-	double GetTop()	   const { return shape_top; }
-	double GetBottom() const { return shape_bottom; }
-	double GetLeft()   const { return shape_left; }
-	double GetRight()  const { return shape_right; }
+	// ゲッター
+	double GetTop()	   const { return rectPosition.top; }
+	double GetBottom() const { return rectPosition.bottom; }
+	double GetLeft()   const { return rectPosition.left; }
+	double GetRight()  const { return rectPosition.right; }
 
 };

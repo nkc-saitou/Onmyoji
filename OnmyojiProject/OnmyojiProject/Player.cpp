@@ -7,7 +7,7 @@
 Player::Player() : RectShape()
 {
 	// 画像読み込み
-	LoadDivGraph("test.png", allDivision, divisionX, divisionY, graphSize, graphSize, ghPlayer);
+	LoadDivGraph("test.png", allDivision, divisionX, divisionY, graphSize, graphSize, walkGh);
 }
 
 /////////////////////////////////////////////////////
@@ -124,8 +124,6 @@ void Player::MoveGraphSet()
 		result = iy;
 	}
 
-	DrawFormatString(100, 200, GetColor(255, 255, 255), "ix:%d iy:%d result:%d dir:%d", ix, iy, result,(int)directionState);
-
 	// 斜め移動の場合は横顔を優先
 	if (move == 0.71f) result = ix;
 
@@ -146,6 +144,12 @@ void Player::MoveGraphSet()
 	}
 }
 
+void Player::Collision()
+{
+
+}
+
+
 /////////////////////////////////////////////////////
 //引数			:なし
 //戻り値		:なし
@@ -158,11 +162,16 @@ void Player::Draw()
 	MoveGraphSet();
 
 	// プレイヤー表示
-	DrawGraph(x, y, ghPlayer[result], TRUE);
+	DrawGraph(x, y, walkGh[result], TRUE);
 	DrawCircle(x, y, 10, GetColor(255, 0, 0), TRUE);
 
 }
 
+/////////////////////////////////////////////////////
+//引数			:なし
+//戻り値		:なし
+//動作			:当たり判定の座標を登録
+/////////////////////////////////////////////////////
 void Player::SetPosition()
 {
 	double top	  =  y;
@@ -173,10 +182,6 @@ void Player::SetPosition()
 	SetValue(&top, &bottom, &left, &right);
 }
 
-void Player::Collision()
-{
-
-}
 
 /////////////////////////////////////////////////////
 //引数			:なし
@@ -191,7 +196,7 @@ void Player::Update()
 
 
 	DrawFormatString(100, 600, GetColor(255, 255, 255), "top:%lf bottom:%lf left:%lf right:%lf", GetTop(), GetBottom(),GetLeft(),GetRight());
-	DrawFormatString(100, 700, GetColor(255, 255, 255), "top: 300 bottom:500 left:300 right:500");
+
 	Move();
 	Draw();
 	SetPosition();

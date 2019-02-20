@@ -126,16 +126,19 @@
     <ClCompile Include="Input.cpp" />
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="Collision.cpp" />
+    <ClCompile Include="SealedRock.cpp" />
+    <ClCompile Include="StageEditor.cpp" />
     <ClCompile Include="WinMain.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="BaseShape.h" />
     <ClInclude Include="CircleShape.h" />
     <ClInclude Include="Input.h" />
     <ClInclude Include="Player.h" />
     <ClInclude Include="Collision.h" />
     <ClInclude Include="RectShape.h" />
+    <ClInclude Include="SealedRock.h" />
     <ClInclude Include="Singleton.h" />
+    <ClInclude Include="StageEditor.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

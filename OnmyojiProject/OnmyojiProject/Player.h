@@ -22,7 +22,7 @@ enum Direction
 ///////////////////////////////////////////
 Playerクラス
 
-概要　：プレイヤーの表示や、挙動を制御
+概要　：プレイヤーの表示、挙動を制御
 ///////////////////////////////////////////
 */
 class  Player : public RectShape
@@ -31,6 +31,7 @@ class  Player : public RectShape
 	// 変数
 	//===============================
 
+private:
 	// イメージのサイズ。縦横ともに64px
 	const int graphSize = 64;
 
@@ -45,7 +46,8 @@ class  Player : public RectShape
 
 
 	// グラフィックハンドル
-	int ghPlayer[12];
+	int walkGh[12];
+	int idolGh[8];
 
 	// アナログスティックの回転度を取得
 	int tempMoveX = 0, tempMoveY = 0;
@@ -74,15 +76,14 @@ class  Player : public RectShape
 	//===============================
 	// 関数
 	//===============================
+
+	void Move(); // 移動処理
+	void MoveGraphSet(); // 移動した際のイメージの変更処理
+	void Collision(); // 当たり判定
+	void Draw(); // 表示処理
+
 public:
 	Player();
-	void Update();
 	void SetPosition();
-
-private:
-
-	void MoveGraphSet(); // 移動した際のイメージの変更処理
-	void Draw(); // 表示処理
-	void Move(); // 移動処理
-	void Collision();
+	void Update();
 };
