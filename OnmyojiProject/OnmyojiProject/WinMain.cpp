@@ -11,11 +11,12 @@
 int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine, int nCmdShow)
 {
 	// 1920x1080
-	const int screenSizeX = 1600;
-	const int screenSizeY = 900;
+	const int screenSizeX = 1920;
+	const int screenSizeY = 1080;
 
 	//ウィンドウ表示
 	ChangeWindowMode(true);
+	SetMainWindowText("陰陽師");
 	SetGraphMode(screenSizeX, screenSizeY, 32);//画面サイズ指定
 
 	//DXライブラリの初期化処理

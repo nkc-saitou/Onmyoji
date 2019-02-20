@@ -7,109 +7,132 @@
 StageEditor::StageEditor()
 {
 	// 画像読み込み
-	LoadDivGraph("TestMapChip2.png", allDivision, divisionX, divisionY, selectGraphSize, selectGraphSize, chipGh);
+	LoadDivGraph("TestMapChip3.png", allDivision, divisionX, divisionY, selectMapChipGraphSize, selectMapChipGraphSize, chipGh);
 
-	// 現在のスクリーンサイズを取得
-	GetDrawScreenSize(&nowScreenSizeX, &nowScreenSizeY);
-
-	SetMapChip();
+	SetMapChipPlacePos();
+	SetSelectMapChipPlacePos();
 }
 
 bool StageEditor::IsRectEdge(int x, int y)
 {
-	if (y == 0 || y == mapY - 1 || x == 0 || x == mapX - 1) return true;
+	if (y == 0 || y == mapNumY - 1 || x == 0 || x == mapNumX - 1) return true;
 	else return false;
 }
 
-void StageEditor::ManageChip()
+
+void StageEditor::SetMapChipPlacePos()
 {
-
-}
-
-RectPosition StageEditor::SetChipPosData(int x, int y)
-{
-	chipPosition.top = ((nowScreenSizeY / 3) + (setGraphSize * y)) -  (32 / 2);
-	chipPosition.left = ((nowScreenSizeX / 3) + (setGraphSize * x)) - (32 / 2);
-	chipPosition.bottom = chipPosition.top + 32;
-	chipPosition.right = chipPosition.left + 32;
+	chipKindIndex.clear();
+	chipPosVec.clear();
+	chipRectPosVec.clear();
 
 
-
-	return chipPosition;
-}
-
-void StageEditor::SetMapChip()
-{
 	vector<int> tempChipKind = vector<int>();
 	vector<RectPosition> tempRectPos = vector<RectPosition>();
+	vector<ChipPosition> tempChipPos = vector<ChipPosition>();
 
 	// 配列の中身を初期化
-	for (int i = 0; i < mapY; ++i)
+	for (int i = 0; i < mapNumY; ++i)
 	{
-		for (int j = 0; j < mapX; ++j)
+		for (int j = 0; j < mapNumX; ++j)
 		{
-			tempRectPos.push_back(SetChipPosData(j, i));
+			tempChipPos.push_back(GetChipCenterPos(j, i));
+
+			tempRectPos.push_back(GetChipVertexPos(j, i));
 
 			if (IsRectEdge(j, i)) tempChipKind.push_back(1);
 			else tempChipKind.push_back(0);
 		}
 
-		chipKindVec.push_back(tempChipKind);
-		chipPositionVec.push_back(tempRectPos);
+		chipKindIndex.push_back(tempChipKind);
+		chipPosVec.push_back(tempChipPos);
+		chipRectPosVec.push_back(tempRectPos);
 
 		tempChipKind.clear();
+		tempChipPos.clear();
 		tempRectPos.clear();
 	}
 }
+
+ChipPosition StageEditor::GetChipCenterPos(int x, int y)
+{
+	ChipPosition chipPos;
+
+	chipPos.drawPosX = mapEditorPosX + (mapChipGraphSize * x);
+	chipPos.drawPosY = mapEditorPosY + (mapChipGraphSize * y);
+
+	return chipPos;
+}
+
+RectPosition StageEditor::GetChipVertexPos(int x, int y)
+{
+	RectPosition chipRectPos;
+
+	chipRectPos.top = GetChipCenterPos(x, y).drawPosY - (mapChipGraphSize / 2);
+	chipRectPos.left = GetChipCenterPos(x, y).drawPosX - (mapChipGraphSize / 2);
+	chipRectPos.bottom = chipRectPos.top + mapChipGraphSize;
+	chipRectPos.right = chipRectPos.left + mapChipGraphSize;
+
+	return chipRectPos;
+}
+
+void StageEditor::SetSelectMapChipPlacePos()
+{
+	selectChipPosVec.clear();
+	selectChipRectPosVec.clear();
+
+	ChipPosition selectChipPos;
+
+	RectPosition selectChipRectPos;
+
+	for (int i = 0; i < allDivision + 1; ++i)
+	{
+		selectChipPos.drawPosY = (selectMapChipGraphSize / 2) + selectMapChipGraphSize * i;
+		selectChipPos.drawPosX = selectMapChipGraphSize * 2;
+		selectChipPosVec.push_back(selectChipPos);
+
+		selectChipRectPos.top = selectChipPos.drawPosY;
+		selectChipRectPos.left = selectChipPos.drawPosX;
+		selectChipRectPos.bottom = selectChipRectPos.top + selectMapChipGraphSize;
+		selectChipRectPos.right = selectChipRectPos.left + selectMapChipGraphSize;
+
+		selectChipRectPosVec.push_back(selectChipRectPos);
+	}
+}
+
 
 void StageEditor::ExportStage()
 {
 
 }
 
+bool StageEditor::IsRectMouseOver(RectPosition chipRectPos)
+{
+	if (Collision::Instance()->CheckRectAndPoint(chipRectPos, mousePosX, mousePosY)) return true;
+	else return false;
+}
+
+bool StageEditor::IsRectClick(RectPosition chipRectPos)
+{
+	if (IsRectMouseOver(chipRectPos) && Input::Instance()->Button(MOUSE_INPUT_LEFT)) return true;
+	else return false;
+}
+
+
 void StageEditor::ChangeMapChip(int x, int y, int chipInde, RectPosition chipRectPos)
 {
-	// マウスの位置を取得
-	GetMousePoint(&mousePosX, &mousePosY);
+	if(IsRectClick(chipRectPos)) chipKindIndex[x][y] = chipInde;
+}
 
-	if (Collision::Instance()->CheckRectAndPoint(chipRectPos, mousePosX, mousePosY))
+void StageEditor::MapChipDraw()
+{
+	for (int i = 0; i < mapNumY; i++)
 	{
-
-		//DrawFormatString(100, 100, GetColor(255, 255, 255), "top:%d left:%d bottom:%d right:%d mouseX:%d mouseY:%d", chipRectPos.top, chipRectPos.left, chipRectPos.bottom, chipRectPos.right, mousePosX, mousePosY);
-		if (Input::Instance()->Button(MOUSE_INPUT_LEFT))
+		for (int j = 0; j < mapNumX; ++j)
 		{
-			chipKindVec[x][y] = chipInde;
-		}
-	}
-}
+			DrawRotaGraph(chipPosVec[i][j].drawPosX, chipPosVec[i][j].drawPosY, 0.25, 0.0, chipGh[chipKindIndex[i][j]], TRUE);
 
-bool StageEditor::IsRectClick(RectPosition rectPos)
-{
-	return false;
-}
-
-bool StageEditor::IsRectMouseOver(RectPosition rectPos)
-{
-	return false;
-}
-
-void StageEditor::SetMapChipDraw()
-{
-	for (int i = 0; i < mapY; i++)
-	{
-		for (int j = 0; j < mapX; ++j)
-		{
-			drawPosX = (nowScreenSizeX / 3) + (setGraphSize * j);
-			drawPosY = (nowScreenSizeY / 3) + (setGraphSize * i);
-
-			DrawRotaGraph(drawPosX, drawPosY, 0.25, 0.0, chipGh[chipKindVec[i][j]], TRUE);
-
-			//DrawFormatString(100, 100, GetColor(255, 255, 255), "top:%d left:%d bottom:%d right:%d mouseX:%d mouseY:%d",
-			//	chipPositionVec[1][1].top, chipPositionVec[1][1].left, chipPositionVec[1][1].bottom, chipPositionVec[1][1].right, mousePosX, mousePosY);
-
-			//DrawBox(chipPositionVec[i][j].left, chipPositionVec[i][j].top, chipPositionVec[i][j].right, chipPositionVec[i][j].bottom, GetColor(255, 255, 0), TRUE);
-
-			if (IsRectEdge(j, i) == false) ChangeMapChip(i, j, 3, chipPositionVec[i][j]);
+			if (IsRectEdge(j, i) == false) ChangeMapChip(i, j, chipIndex, chipRectPosVec[i][j]);
 
 		}
 	}
@@ -117,17 +140,37 @@ void StageEditor::SetMapChipDraw()
 
 void StageEditor::SelectMapChipDraw()
 {
+	for (int i = 0; i < allDivision + 1; ++i)
+	{
+		DrawGraph(selectChipPosVec[i].drawPosX, selectChipPosVec[i].drawPosY, chipGh[i], TRUE);
 
+		if (IsRectClick(selectChipRectPosVec[i]))
+		{
+			chipIndex = i;
+
+			//ボタンを押した際の演出
+			SetDrawBlendMode(DX_BLENDMODE_ALPHA, 128);
+			DrawBox(selectChipRectPosVec[i].left, selectChipRectPosVec[i].top, selectChipRectPosVec[i].right, selectChipRectPosVec[i].bottom,GetColor(255, 255, 255), TRUE);
+			SetDrawBlendMode(DX_BLENDMODE_NOBLEND, 0);
+		}
+	}
 }
 
 void StageEditor::Draw()
 {
-	SetMapChipDraw();
+	MapChipDraw();
+	SelectMapChipDraw();
 }
 
 void StageEditor::Update()
 {
+	// マウスの位置を取得
+	GetMousePoint(&mousePosX, &mousePosY);
 
+	if (Input::Instance()->Button(MOUSE_INPUT_RIGHT))
+	{
+		SetMapChipPlacePos();
+	}
 
 	Draw();
 }
