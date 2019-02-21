@@ -52,12 +52,14 @@ class StageEditor
 	// 各マスに何が置かれているかを記憶するデータ配列
 	vector<vector<int>> mapStageData = vector<vector<int>>();
 
-	// 
+	// マップチップとして配置する画像サイズを上下左右で取得
 	vector<vector<Rect>> chipRectPosVec = vector<vector<Rect>>();
+	// マップチップとして配置する画像の位置情報を取得
 	vector<vector<ChipPosition>> chipPosVec = vector<vector<ChipPosition>>();
 
-	// 
+	// マップチップを選択する用のオブジェクトの画像サイズを上下左右で取得
 	vector<Rect> selectChipRectPosVec = vector<Rect>();
+	// 選択する用の画像の位置情報を取得
 	vector<ChipPosition> selectChipPosVec = vector<ChipPosition>();
 
 

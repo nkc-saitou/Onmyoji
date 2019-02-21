@@ -13,4 +13,29 @@ c:\users\user\documents\onmyoji\onmyojiproject\onmyojiproject\circleshape.h(43):
 c:\users\user\documents\onmyoji\onmyojiproject\onmyojiproject\collision.cpp(72): warning C4244: '初期化中': 'int' から 'float' への変換です。データが失われる可能性があります。
 c:\users\user\documents\onmyoji\onmyojiproject\onmyojiproject\collision.cpp(73): warning C4244: '初期化中': 'int' から 'float' への変換です。データが失われる可能性があります。
 c:\users\user\documents\onmyoji\onmyojiproject\onmyojiproject\collision.cpp(76): warning C4244: '初期化中': 'int' から 'float' への変換です。データが失われる可能性があります。
+  StageEditor.cpp
+c:\users\user\documents\onmyoji\onmyojiproject\onmyojiproject\rectshape.h(17): warning C4091: 'typedef ': 変数が何も宣言されていないときは、'Rect' の左辺を無視します。
+c:\users\user\documents\onmyoji\onmyojiproject\onmyojiproject\rectshape.h(36): warning C4244: '=': 'double' から 'int' への変換です。データが失われる可能性があります。
+c:\users\user\documents\onmyoji\onmyojiproject\onmyojiproject\rectshape.h(37): warning C4244: '=': 'double' から 'int' への変換です。データが失われる可能性があります。
+c:\users\user\documents\onmyoji\onmyojiproject\onmyojiproject\rectshape.h(38): warning C4244: '=': 'double' から 'int' への変換です。データが失われる可能性があります。
+c:\users\user\documents\onmyoji\onmyojiproject\onmyojiproject\rectshape.h(39): warning C4244: '=': 'double' から 'int' への変換です。データが失われる可能性があります。
+c:\users\user\documents\onmyoji\onmyojiproject\onmyojiproject\circleshape.h(36): warning C4244: '=': 'double' から 'int' への変換です。データが失われる可能性があります。
+c:\users\user\documents\onmyoji\onmyojiproject\onmyojiproject\circleshape.h(37): warning C4244: '=': 'double' から 'int' への変換です。データが失われる可能性があります。
+c:\users\user\documents\onmyoji\onmyojiproject\onmyojiproject\circleshape.h(38): warning C4244: '=': 'double' から 'int' への変換です。データが失われる可能性があります。
+c:\users\user\documents\onmyoji\onmyojiproject\onmyojiproject\circleshape.h(41): warning C4244: 'return': 'const int' から 'float' への変換です。データが失われる可能性があります。
+c:\users\user\documents\onmyoji\onmyojiproject\onmyojiproject\circleshape.h(42): warning C4244: 'return': 'const int' から 'float' への変換です。データが失われる可能性があります。
+c:\users\user\documents\onmyoji\onmyojiproject\onmyojiproject\circleshape.h(43): warning C4244: 'return': 'const int' から 'float' への変換です。データが失われる可能性があります。
+  WinMain.cpp
+c:\users\user\documents\onmyoji\onmyojiproject\onmyojiproject\rectshape.h(17): warning C4091: 'typedef ': 変数が何も宣言されていないときは、'Rect' の左辺を無視します。
+c:\users\user\documents\onmyoji\onmyojiproject\onmyojiproject\rectshape.h(36): warning C4244: '=': 'double' から 'int' への変換です。データが失われる可能性があります。
+c:\users\user\documents\onmyoji\onmyojiproject\onmyojiproject\rectshape.h(37): warning C4244: '=': 'double' から 'int' への変換です。データが失われる可能性があります。
+c:\users\user\documents\onmyoji\onmyojiproject\onmyojiproject\rectshape.h(38): warning C4244: '=': 'double' から 'int' への変換です。データが失われる可能性があります。
+c:\users\user\documents\onmyoji\onmyojiproject\onmyojiproject\rectshape.h(39): warning C4244: '=': 'double' から 'int' への変換です。データが失われる可能性があります。
+c:\users\user\documents\onmyoji\onmyojiproject\onmyojiproject\circleshape.h(36): warning C4244: '=': 'double' から 'int' への変換です。データが失われる可能性があります。
+c:\users\user\documents\onmyoji\onmyojiproject\onmyojiproject\circleshape.h(37): warning C4244: '=': 'double' から 'int' への変換です。データが失われる可能性があります。
+c:\users\user\documents\onmyoji\onmyojiproject\onmyojiproject\circleshape.h(38): warning C4244: '=': 'double' から 'int' への変換です。データが失われる可能性があります。
+c:\users\user\documents\onmyoji\onmyojiproject\onmyojiproject\circleshape.h(41): warning C4244: 'return': 'const int' から 'float' への変換です。データが失われる可能性があります。
+c:\users\user\documents\onmyoji\onmyojiproject\onmyojiproject\circleshape.h(42): warning C4244: 'return': 'const int' から 'float' への変換です。データが失われる可能性があります。
+c:\users\user\documents\onmyoji\onmyojiproject\onmyojiproject\circleshape.h(43): warning C4244: 'return': 'const int' から 'float' への変換です。データが失われる可能性があります。
+  コードを生成中...
   OnmyojiProject.vcxproj -> C:\Users\user\Documents\Onmyoji\OnmyojiProject\Debug\OnmyojiProject.exe
