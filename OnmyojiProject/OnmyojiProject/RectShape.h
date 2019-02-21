@@ -8,7 +8,7 @@ RectPosition構造体
 使い方：当たり判定を実行する際の引数として与える
 ///////////////////////////////////////////
 */
-struct RectPosition
+typedef struct Rect
 {
 	int top;
 	int bottom;
@@ -28,21 +28,21 @@ RectShapeクラス
 class RectShape
 {
 public:
-	RectPosition rectPosition;
+	Rect rect;
 
 	// 構造体の値を更新
 	void SetValue(double *top, double *bottom, double *left, double *right)
 	{
-		this->rectPosition.top = *top;
-		this->rectPosition.bottom = *bottom;
-		this->rectPosition.left = *left;
-		this->rectPosition.right = *right;
+		this->rect.top = *top;
+		this->rect.bottom = *bottom;
+		this->rect.left = *left;
+		this->rect.right = *right;
 	}
 
 	// ゲッター
-	double GetTop()	   const { return rectPosition.top; }
-	double GetBottom() const { return rectPosition.bottom; }
-	double GetLeft()   const { return rectPosition.left; }
-	double GetRight()  const { return rectPosition.right; }
+	double GetTop()	   const { return rect.top; }
+	double GetBottom() const { return rect.bottom; }
+	double GetLeft()   const { return rect.left; }
+	double GetRight()  const { return rect.right; }
 
 };

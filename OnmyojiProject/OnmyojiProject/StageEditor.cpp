@@ -3,7 +3,6 @@
 #include "Input.h"
 
 
-
 StageEditor::StageEditor()
 {
 	// âÊëúì«Ç›çûÇ›
@@ -22,14 +21,13 @@ bool StageEditor::IsRectEdge(int x, int y)
 
 void StageEditor::SetMapChipPlacePos()
 {
-	chipKindIndex.clear();
+	mapStageData.clear();
 	chipPosVec.clear();
 	chipRectPosVec.clear();
 
-
-	vector<int> tempChipKind = vector<int>();
-	vector<RectPosition> tempRectPos = vector<RectPosition>();
+	vector<int> tempMapStageData = vector<int>();
 	vector<ChipPosition> tempChipPos = vector<ChipPosition>();
+	vector<Rect> tempRectPos = vector<Rect>();
 
 	// îzóÒÇÃíÜêgÇèâä˙âª
 	for (int i = 0; i < mapNumY; ++i)
@@ -38,17 +36,17 @@ void StageEditor::SetMapChipPlacePos()
 		{
 			tempChipPos.push_back(GetChipCenterPos(j, i));
 
-			tempRectPos.push_back(GetChipVertexPos(j, i));
+			tempRectPos.push_back(GetChipRectPos(j, i));
 
-			if (IsRectEdge(j, i)) tempChipKind.push_back(1);
-			else tempChipKind.push_back(0);
+			if (IsRectEdge(j, i)) tempMapStageData.push_back(1);
+			else tempMapStageData.push_back(0);
 		}
 
-		chipKindIndex.push_back(tempChipKind);
+		mapStageData.push_back(tempMapStageData);
 		chipPosVec.push_back(tempChipPos);
 		chipRectPosVec.push_back(tempRectPos);
 
-		tempChipKind.clear();
+		tempMapStageData.clear();
 		tempChipPos.clear();
 		tempRectPos.clear();
 	}
@@ -64,9 +62,9 @@ ChipPosition StageEditor::GetChipCenterPos(int x, int y)
 	return chipPos;
 }
 
-RectPosition StageEditor::GetChipVertexPos(int x, int y)
+Rect StageEditor::GetChipRectPos(int x, int y)
 {
-	RectPosition chipRectPos;
+	Rect chipRectPos;
 
 	chipRectPos.top = GetChipCenterPos(x, y).drawPosY - (mapChipGraphSize / 2);
 	chipRectPos.left = GetChipCenterPos(x, y).drawPosX - (mapChipGraphSize / 2);
@@ -83,7 +81,7 @@ void StageEditor::SetSelectMapChipPlacePos()
 
 	ChipPosition selectChipPos;
 
-	RectPosition selectChipRectPos;
+	Rect selectChipRectPos;
 
 	for (int i = 0; i < allDivision + 1; ++i)
 	{
@@ -106,22 +104,22 @@ void StageEditor::ExportStage()
 
 }
 
-bool StageEditor::IsRectMouseOver(RectPosition chipRectPos)
+bool StageEditor::IsRectMouseOver(Rect chipRectPos)
 {
 	if (Collision::Instance()->CheckRectAndPoint(chipRectPos, mousePosX, mousePosY)) return true;
 	else return false;
 }
 
-bool StageEditor::IsRectClick(RectPosition chipRectPos)
+bool StageEditor::IsRectClick(Rect chipRectPos)
 {
 	if (IsRectMouseOver(chipRectPos) && Input::Instance()->Button(MOUSE_INPUT_LEFT)) return true;
 	else return false;
 }
 
 
-void StageEditor::ChangeMapChip(int x, int y, int chipInde, RectPosition chipRectPos)
+void StageEditor::ChangeMapChip(int x, int y, int chipInde, Rect chipRectPos)
 {
-	if(IsRectClick(chipRectPos)) chipKindIndex[x][y] = chipInde;
+	if(IsRectClick(chipRectPos)) mapStageData[x][y] = chipInde;
 }
 
 void StageEditor::MapChipDraw()
@@ -130,7 +128,7 @@ void StageEditor::MapChipDraw()
 	{
 		for (int j = 0; j < mapNumX; ++j)
 		{
-			DrawRotaGraph(chipPosVec[i][j].drawPosX, chipPosVec[i][j].drawPosY, 0.25, 0.0, chipGh[chipKindIndex[i][j]], TRUE);
+			DrawRotaGraph(chipPosVec[i][j].drawPosX, chipPosVec[i][j].drawPosY, 0.25, 0.0, chipGh[mapStageData[i][j]], TRUE);
 
 			if (IsRectEdge(j, i) == false) ChangeMapChip(i, j, chipIndex, chipRectPosVec[i][j]);
 

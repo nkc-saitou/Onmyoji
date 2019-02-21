@@ -49,28 +49,35 @@ class StageEditor
 	double mapNumX = screenScaleX / 64;
 	double mapNumY = screenScaleY / 64;
 
-	RectPosition selectPosition;
+	// 各マスに何が置かれているかを記憶するデータ配列
+	vector<vector<int>> mapStageData = vector<vector<int>>();
 
-	vector<vector<int>> chipKindIndex = vector<vector<int>>();
-	vector<vector<RectPosition>> chipRectPosVec = vector<vector<RectPosition>>();
+	// 
+	vector<vector<Rect>> chipRectPosVec = vector<vector<Rect>>();
 	vector<vector<ChipPosition>> chipPosVec = vector<vector<ChipPosition>>();
 
-	vector<RectPosition> selectChipRectPosVec = vector<RectPosition>();
+	// 
+	vector<Rect> selectChipRectPosVec = vector<Rect>();
 	vector<ChipPosition> selectChipPosVec = vector<ChipPosition>();
 
 
-	RectPosition GetChipVertexPos(int x, int y);
+
+	//===============================
+	// 関数
+	//===============================
+
+	Rect GetChipRectPos(int x, int y);
 	ChipPosition GetChipCenterPos(int x, int y);
 
 	void SetMapChipPlacePos();
 	void SetSelectMapChipPlacePos();
 	void ExportStage();
-	void ChangeMapChip(int x, int y, int chipInde, RectPosition chipRectPos);
+	void ChangeMapChip(int x, int y, int chipInde, Rect chipRectPos);
 	void MapChipDraw();
 	void SelectMapChipDraw();
 
-	bool IsRectMouseOver(RectPosition chipRectPos);
-	bool IsRectClick(RectPosition chipRectPos);
+	bool IsRectMouseOver(Rect chipRectPos);
+	bool IsRectClick(Rect chipRectPos);
 	bool IsRectEdge(int x, int y);
 
 public:

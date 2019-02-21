@@ -29,14 +29,14 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
 
 	//========Test==========
 
-	RectPosition testPos;
+	Rect testPos;
 
 	testPos.left = 300;
 	testPos.top = 300;
 	testPos.right = 500;
 	testPos.bottom = 500;
 
-	CirclePosition circleTestPos;
+	Circle circleTestPos;
 
 	circleTestPos.x = 700;
 	circleTestPos.y = 500;

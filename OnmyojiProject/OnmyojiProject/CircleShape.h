@@ -8,7 +8,7 @@ CirclePosition構造体
 使い方：当たり判定を実行する際の引数として与える
 ///////////////////////////////////////////
 */
-struct CirclePosition
+struct Circle
 {
 	int x;
 	int y;
@@ -29,7 +29,7 @@ class CircleShape
 {
 public:
 
-	CirclePosition circlePosition;
+	Circle circlePosition;
 
 	void SetValue(double *x, double *y, double *raddius)
 	{

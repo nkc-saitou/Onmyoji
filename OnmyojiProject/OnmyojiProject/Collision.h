@@ -19,17 +19,17 @@ class Collision : public Singleton <Collision>
 	// 矩形と円形の当たり判定用 http://ftvoid.com/blog/post/300
 
 	// 中心点と長方形の当たり判定
-	bool RectPointAndCircle(const RectPosition& rect,const CirclePosition& circle);
+	bool RectPointAndCircle(const Rect& rect,const Circle& circle);
 	// 角丸の当たり判定
-	bool RectVertexAndCircle(const RectPosition& rect,const CirclePosition& circle);
+	bool RectVertexAndCircle(const Rect& rect,const Circle& circle);
 
 public:
 	// 矩形と矩形
-	bool CheckRectAndRect(const RectPosition& rect1, const RectPosition& rect2);
+	bool CheckRectAndRect(const Rect& rect1, const Rect& rect2);
 	// 円形と円形
-	bool CheckCircleAndCircle(const CirclePosition& circle1, const CirclePosition& circle2);
+	bool CheckCircleAndCircle(const Circle& circle1, const Circle& circle2);
 	// 矩形と円形
-	bool CheckRectAndCircle(const RectPosition& rect, const CirclePosition& circle);
+	bool CheckRectAndCircle(const Rect& rect, const Circle& circle);
 	// 矩形と点
-	bool CheckRectAndPoint(const RectPosition& rect, int x, int y);
+	bool CheckRectAndPoint(const Rect& rect, int x, int y);
 };
